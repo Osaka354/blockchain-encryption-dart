@@ -3,6 +3,16 @@ import 'package:blockchian/model/model.dart';
 import 'dart:convert';
 
 class TextApi extends BaseRequestApi {
+  Future<BaseResponseModel<TextModel>> uploadText(String content) {
+    return post(
+      "/des/store",
+      fromJsonT: (map) => TextModel.fromJson(map),
+      body: json.encode({
+        "content": content,
+      }),
+    );
+  }
+
   Future<BaseResponseModel<List<TextModel>>> getTexts() async {
     return get(
       "/des",
@@ -11,16 +21,6 @@ class TextApi extends BaseRequestApi {
           (x) => TextModel.fromJson(x),
         ),
       ),
-    );
-  }
-
-  Future<BaseResponseModel<TextModel>> uploadText(String content) {
-    return post(
-      "/des/store",
-      fromJsonT: (map) => TextModel.fromJson(map),
-      body: json.encode({
-        "content": content,
-      }),
     );
   }
 }

@@ -6,10 +6,10 @@ import 'dart:async';
 
 import 'dart:io';
 
-final _baseUrl = "https://encryption-lab.herokuapp.com/api";
+final _myBaseUrl = "https://encryption-lab.herokuapp.com/api";
 
 class BaseRequestApi {
-  Uri _uri(String path) => Uri.parse(_baseUrl + path);
+  Uri _uri(String path) => Uri.parse(_myBaseUrl + path);
 
   Future<BaseResponseModel<T>> get<T>(
     String path, {
@@ -26,7 +26,9 @@ class BaseRequestApi {
         );
       }
       return BaseResponseModel<T>(
-          isSuccess: false, message: "Somthing when wrong!");
+        isSuccess: false,
+        message: "Somthing when wrong!",
+      );
     } on SocketException {
       return BaseResponseModel<T>(
         isSuccess: false,
