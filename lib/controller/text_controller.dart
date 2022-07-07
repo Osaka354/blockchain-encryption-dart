@@ -66,6 +66,13 @@ class TextController {
     }
   }
 
+  void _printText(TextModel text) {
+    print("ID: ${text.id}");
+    print("Content: ${text.content}");
+    print("Create At: ${text.createdAt.toString()}");
+    print("Update At: ${text.updatedAt.toString()}\n");
+  }
+
   Future _printData<T>(
     BaseResponseModel data, {
     required void Function(T plaint) printPlantText,
@@ -73,12 +80,5 @@ class TextController {
     print("\nCipher Text:\n${data.chipherText}\n");
     print("Plaint Text:\n${data.plaintText}\n");
     printPlantText(data.data);
-  }
-
-  void _printText(TextModel text) {
-    print("ID: ${text.id}");
-    print("Content: ${text.content}");
-    print("Create At: ${text.createdAt.toString()}");
-    print("Update At: ${text.updatedAt.toString()}\n");
   }
 }
